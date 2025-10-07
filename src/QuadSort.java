@@ -1,8 +1,10 @@
 
 public class QuadSort {
 	public static void main(String[] args) {
-		int[] i = selectionSort(new int[] {6, 5, 4, 3, 2, 1});
-		System.out.print("" + i[0] + i[1] + i[2] + i[3] + i[4] + i[5]);
+		int[] i = selectionSort(new int[] {6, 5, 8, 4, 7, 98, 10, 9, 1000, 14, 498, 485, 93, 3, 2, 1});
+		for(int p : i) {
+			System.out.print(p + ", ");
+		}
 	}
 	public static int[] bubbleSort(int[] arr) {
 		for(int i = 0; i < arr.length -1; i++) {
@@ -16,19 +18,18 @@ public class QuadSort {
 		}
 		return arr;
 	}
-	
 	public static int[] selectionSort(int[] arr) {
 		for(int i = 0; i < arr.length; i++) {
 			int l = arr[i];
-			int lindex = arr.length-1;
+			int lindex = i;
 			for(int j = i; j < arr.length; j++) {
 				if(l > arr[j]) {
 					l = arr[j];
 					lindex = j;
-					System.out.print(i);
-					System.out.print(j);
-					System.out.print(l);
-					System.out.print(lindex + "\n");
+					//System.out.print(i);
+					//System.out.print(j);
+					//System.out.print(l);
+					//System.out.print(lindex + "\n");
 				}
 			}
 			int temp = arr[i];
