@@ -1,7 +1,7 @@
 
 public class QuadSort {
 	public static void main(String[] args) {
-		int set = 100;
+		int set = 1000;
 		int[] i = new int[set];
 		for(int p = 0; p < i.length; p++) {i[p] = (int)(Math.random()*set);}
 		System.out.println("START  : "+(System.currentTimeMillis()));
