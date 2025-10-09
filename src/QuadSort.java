@@ -1,11 +1,16 @@
 
 public class QuadSort {
 	public static void main(String[] args) {
-		int[] i = selectionSort(new int[] {6, 5, 8, 4, 7, 98, 10, 9, 1000, 14, 498, 485, 93, 3, 2, 1});
-		for(int p : i) {
-			System.out.print(p + ", ");
-		}
-	}
+		int set = 100;
+		int[] i = new int[set];
+		for(int p = 0; p < i.length; p++) {i[p] = (int)(Math.random()*set);}
+		System.out.println("START  : "+(System.currentTimeMillis()));
+		
+		i = bubbleSort(i);
+		System.out.println("FINISH : "+(System.currentTimeMillis()));
+
+		for(int p : i) {System.out.print(p + ", ");}}
+	
 	public static int[] bubbleSort(int[] arr) {
 		for(int i = 0; i < arr.length -1; i++) {
 			for(int j = 0; j < arr.length -1; j++) {
@@ -39,12 +44,55 @@ public class QuadSort {
 		}
 		return arr;
 	}
-	
 	public static int[] insertionSort(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < i; j++) {
+				if(arr[i] < arr[j]) {
+					int t = arr[i];
+					arr[i] = arr[j];
+					arr[j] = t;
+				}
+			}
+		}
 		return arr;
 	}
 	public static int[] mergeSort(int[] arr) {
-		return arr;
+		if(arr.length == 1) {return arr;}
+		int[] arr2 = new int[(int)(((arr.length)/2.0)+0.5)];
+		
+		int[] arr3 = new int[(int)(((arr.length)/2))];
+
+		//System.out.println("len2 :"+arr2.length);
+		//System.out.println("len3 :"+arr3.length);
+		for(int i = 0; i < arr2.length; i++) {arr2[i] = arr[i];}
+		for(int i = 0; i < arr3.length; i++) {arr3[i] = arr[i+arr2.length];}
+		
+		arr2 = mergeSort(arr2);
+		arr3 = mergeSort(arr3);
+		int[] arr4 = new int[arr2.length+arr3.length];
+		int a = 0; // for arr 2
+		int b = 0; // for arr 3
+		int i = 0; // for arr 4
+		while (a < arr2.length && b < arr3.length) {
+			if (arr2[a] <= arr3[b]) {
+				arr4[i] = arr2[a];
+				a++;
+			} else {
+				arr4[i] = arr3[b];
+				b++;
+			}
+			i++;
+		}
+		while (a < arr2.length) {
+			arr4[i] = arr2[a];
+			i++;
+			a++;
+		}
+		while (b < arr3.length) {
+			arr4[i] = arr3[b];
+			i++;
+			b++;
+		}
+		return (arr4);	
 	}
-	
 }
