@@ -1,15 +1,15 @@
 
 public class QuadSort {
 	public static void main(String[] args) {
-		int set = 1000;
+		int set = 1000000;
 		int[] i = new int[set];
 		for(int p = 0; p < i.length; p++) {i[p] = (int)(Math.random()*set);}
-		System.out.println("START  : "+(System.currentTimeMillis()));
+		System.out.print(""+(System.currentTimeMillis()));
 		
-		i = bubbleSort(i);
-		System.out.println("FINISH : "+(System.currentTimeMillis()));
+		i = insertionSort(i);
+		System.out.print("-"+(System.currentTimeMillis()));
 
-		for(int p : i) {System.out.print(p + ", ");}}
+	}
 	
 	public static int[] bubbleSort(int[] arr) {
 		for(int i = 0; i < arr.length -1; i++) {
