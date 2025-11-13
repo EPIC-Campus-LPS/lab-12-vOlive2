@@ -1,13 +1,16 @@
 
 public class QuadSort {
 	public static void main(String[] args) {
-		int set = 1000000;
-		int[] i = new int[set];
-		for(int p = 0; p < i.length; p++) {i[p] = (int)(Math.random()*set);}
-		System.out.print(""+(System.currentTimeMillis()));
+		int set = 10;
+		int[] i = {8, 10, 7, 7, 4, 3, 2};
+		//for(int p = 0; p < i.length; p++) {i[p] = (int)(Math.random()*set);}
+		//System.out.print(""+(System.currentTimeMillis()));
 		
 		i = insertionSort(i);
-		System.out.print("-"+(System.currentTimeMillis()));
+		//System.out.print("-"+(System.currentTimeMillis()));
+		for(int il : i) {
+			System.out.print(il + " ");
+		}
 
 	}
 	
@@ -31,10 +34,6 @@ public class QuadSort {
 				if(l > arr[j]) {
 					l = arr[j];
 					lindex = j;
-					//System.out.print(i);
-					//System.out.print(j);
-					//System.out.print(l);
-					//System.out.print(lindex + "\n");
 				}
 			}
 			int temp = arr[i];
@@ -45,13 +44,16 @@ public class QuadSort {
 		return arr;
 	}
 	public static int[] insertionSort(int[] arr) {
-		for(int i = 0; i < arr.length; i++) {
-			for(int j = 0; j < i; j++) {
-				if(arr[i] < arr[j]) {
-					int t = arr[i];
-					arr[i] = arr[j];
-					arr[j] = t;
+		for(int i = 1; i < arr.length; i++) {
+			int s = arr[i];
+			int t = s;
+			for(int j = 0; j <= i; j++) {
+				if(s < arr[j]) {
+					t = arr[j];
+					arr[j] = s;			
+					s = t;
 				}
+				if(i==j) {arr[i] = t;}
 			}
 		}
 		return arr;
